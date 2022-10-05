@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const app = express();
 const port =4000;
 
+const user = require('./routes/user')
 
 
 const url ='mongodb://localhost/MobileAppBackend'
@@ -12,6 +13,9 @@ const con = mongoose.connection
 con.on("open",()=>{
     console.log('MongoDB connected!');
 })
+
+app.use(express.json())
+app.use('/users',user)
 
 
 
