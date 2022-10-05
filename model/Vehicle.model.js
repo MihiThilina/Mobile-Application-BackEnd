@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const  loginSchema = new mongoose.Schema({
+const  VehicleSchema = new mongoose.Schema({
     Reg_Number :{
         type:String,
         required: true,
@@ -32,4 +32,4 @@ const  loginSchema = new mongoose.Schema({
     },
 
 })
-module.exports = mongoose.model('login',loginSchema)
+module.exports = mongoose.model('Vehicle',VehicleSchema)

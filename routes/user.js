@@ -7,8 +7,14 @@ const User = require("../model/User.model");
 app.use(express.json());
 
 router.get("/", async (req, res) => {
-  res.send("awaaaaaaaaaaaa");
-  console.log("aqaaaaaaaaaaaaaaaaaaaa");
+  //   res.send("awaaaaaaaaaaaa");
+  //   console.log("aqaaaaaaaaaaaaaaaaaaaa");
+  try {
+    const user = await User.find();
+    res.json(user);
+  } catch (err) {
+    res.send("Err: " + err);
+  }
 });
 
 router.get("/:id", async (req, res) => {});

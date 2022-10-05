@@ -4,6 +4,7 @@ const app = express();
 const port =4000;
 
 const user = require('./routes/user')
+const vehicels = require('./routes/vehical')
 
 
 const url ='mongodb://localhost/MobileAppBackend'
@@ -16,6 +17,7 @@ con.on("open",()=>{
 
 app.use(express.json())
 app.use('/users',user)
+app.use('/vehicels',vehicels)
 
 
 
