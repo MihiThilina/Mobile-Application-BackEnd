@@ -20,6 +20,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {});
 
 router.post("/", async (req, res) => {
+  console.log('awwwwwwwwaaaaaaaaaaa')
   const user = new User({
     Username: req.body.Username,
     Address: req.body.Address,

@@ -7,20 +7,35 @@ const Vehicle = require("../model/Vehicle.model");
 app.use(express.json());
 
 router.get("/", async (req, res) => {
-  res.send("awaaaaaaaaaaaa");
-  console.log("aqaaaaaaaaaaaaaaaaaaaa");
-  //   try {
-  //     const user = await User.find();
-  //     res.json(user);
-  //   } catch (err) {
-  //     res.send("Err: " + err);
-  //   }
+    try {
+      const vehical = await Vehicle.find();
+      res.json(vehical);
+    } catch (err) {
+      res.send("Err: " + err);
+    }
 });
 
-router.get("/:id", async (req, res) => {});
+router.get("/search", async (req, resp) => {
+  try {
+    console.log("location = " + req.query.Location);
+    let res = await Vehicle.find();
+    let temp = [];
+    res.forEach(async (e) => {
+      if ((e.Date === req.query.Date) | (e.Location === req.query.Location)) {
+        console.log(e);
+        temp.push(e);
+      }
+    });
+    console.log("temp = " + temp);
+    resp.json(temp);
+  } catch (err) {
+    resp.json({ message: err });
+  }
+});
 
 router.post("/", async (req, res) => {
   const vehical = new Vehicle({
+    image:req.body.image,
     Reg_Number: req.body.Reg_Number,
     Brand: req.body.Brand,
     Price: req.body.Price,
